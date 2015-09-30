@@ -22,19 +22,6 @@ class TranslationServiceProviderTest extends ReflectionTestCase
 
     /**
      * @expectedException        \RuntimeException
-     * @expectedExceptionMessage The TranslationServiceProvider is not registered in this application
-     */
-    public function testBootAppTranslatorNotIsset()
-    {
-        $app = new Application();
-
-        $app->register(new TranslationServiceProvider());
-
-        $app->boot();
-    }
-
-    /**
-     * @expectedException        \RuntimeException
      * @expectedExceptionMessage The translation directory parameter is not registered in this application
      */
     public function testBootAppTranslationDirectoryNotIsset()
