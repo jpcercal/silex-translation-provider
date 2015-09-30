@@ -22,7 +22,7 @@ class TranslationServiceProvider implements ServiceProviderInterface
             throw new \RuntimeException('The translation directory not exists');
         }
 
-        $app['translator'] = $app->share($app->extend('translator', function (Translator $translator, Application $app) use ($app) {
+        $closure = function (Translator $translator, Application $app) use ($app) {
 
             $translator->addLoader('yaml', new YamlFileLoader());
 
@@ -43,7 +43,9 @@ class TranslationServiceProvider implements ServiceProviderInterface
             }
 
             return $translator;
-        }));
+        };
+
+        $app['translator'] = $app->share($app->extend('translator', $closure));
     }
 
     /**
