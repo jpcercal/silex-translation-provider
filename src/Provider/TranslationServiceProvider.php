@@ -18,22 +18,28 @@ class TranslationServiceProvider implements ServiceProviderInterface
             throw new \RuntimeException('The TranslationServiceProvider is not registered in this application');
         }
 
-        $translatorClosure = function (Translator $translator, Application $app) {
+        if (!isset($app['translation.directory'])) {
+            throw new \RuntimeException('The translation directory parameter is not registered in this application');
+        }
+
+        if (!file_exists($app['translation.directory'])) {
+            throw new \RuntimeException('The translation directory not exists');
+        }
+
+        $app['translator'] = $app->share($app->extend('translator', function (Translator $translator, Application $app) use ($app) {
 
             $translator->addLoader('yaml', new YamlFileLoader());
 
-            $iterator = new \DirectoryIterator(STORAGE_PATH_I18N);
+            $iterator = new \DirectoryIterator($app['translation.directory']);
 
             foreach ($iterator as $item) {
-                if ($this->fileIsAllowed($item)) {
+                if (!$item->isDot() && $this->fileIsAllowed($item)) {
                     $translator->addResource('yaml', $item->getPathname(), $this->getLocale($item));
                 }
             }
 
             return $translator;
-        };
-
-        $app['translator'] = $app->share($app->extend('translator', $translatorClosure));
+        }));
     }
 
     /**
