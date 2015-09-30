@@ -20,17 +20,15 @@ composer require cekurte/silex-translation-provider
 
 ## Documentation
 
-To use this library you need register the [Silex\Provider\TranslationServiceProvider](https://github.com/silexphp/Silex/blob/1.3/src/Silex/Provider/TranslationServiceProvider.php) and the [Cekurte\Silex\Translation\Provider\TranslationServiceProvider](https://github.com/jpcercal/silex-translation-provider/blob/v0.0.1/src/Provider/TranslationServiceProvider.php).
+To use this library you need register the [Cekurte\Silex\Translation\Provider\TranslationServiceProvider](https://github.com/jpcercal/silex-translation-provider/blob/v0.0.1/src/Provider/TranslationServiceProvider.php).
 
 ```php
 <?php
 
 use Cekurte\Silex\Translation\Provider\TranslationServiceProvider;
-use Silex\Provider\TranslationServiceProvider as SilexTranslationServiceProvider;
 
 // ...
 
-$app->register(new SilexTranslationServiceProvider());
 $app->register(new TranslationServiceProvider(), [
     'translation.directory' => realpath(__DIR__ . '/../your-translation-directory')
 ]);

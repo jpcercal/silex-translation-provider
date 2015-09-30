@@ -14,10 +14,6 @@ class TranslationServiceProvider implements ServiceProviderInterface
      */
     public function boot(Application $app)
     {
-        if (!isset($app['translator'])) {
-            throw new \RuntimeException('The TranslationServiceProvider is not registered in this application');
-        }
-
         if (!isset($app['translation.directory'])) {
             throw new \RuntimeException('The translation directory parameter is not registered in this application');
         }
@@ -29,6 +25,14 @@ class TranslationServiceProvider implements ServiceProviderInterface
         $app['translator'] = $app->share($app->extend('translator', function (Translator $translator, Application $app) use ($app) {
 
             $translator->addLoader('yaml', new YamlFileLoader());
+
+            if (isset($app['locale'])) {
+                $translator->setLocale($app['locale']);
+            }
+
+            if (isset($app['locale_fallbacks'])) {
+                $translator->setFallbackLocales($app['locale_fallbacks']);
+            }
 
             $iterator = new \DirectoryIterator($app['translation.directory']);
 
@@ -69,6 +73,6 @@ class TranslationServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-
+        $app->register(new \Silex\Provider\TranslationServiceProvider());
     }
 }
