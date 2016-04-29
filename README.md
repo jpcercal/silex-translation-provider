@@ -1,9 +1,10 @@
 # SilexTranslationProvider
 
-[![Build Status](https://img.shields.io/travis/jpcercal/silex-translation-provider/master.svg?style=flat-square)](http://travis-ci.org/jpcercal/silex-translation-provider)
+[![Build Status](https://img.shields.io/travis/jpcercal/silex-translation-provider/master.svg?style=square)](http://travis-ci.org/jpcercal/silex-translation-provider)
+[![Code Climate](https://codeclimate.com/github/jpcercal/silex-translation-provider/badges/gpa.svg)](https://codeclimate.com/github/jpcercal/silex-translation-provider)
 [![Coverage Status](https://coveralls.io/repos/jpcercal/silex-translation-provider/badge.svg)](https://coveralls.io/r/jpcercal/silex-translation-provider)
-[![Latest Stable Version](https://img.shields.io/packagist/v/cekurte/silex-translation-provider.svg?style=flat-square)](https://packagist.org/packages/cekurte/silex-translation-provider)
-[![License](https://img.shields.io/packagist/l/cekurte/silex-translation-provider.svg?style=flat-square)](https://packagist.org/packages/cekurte/silex-translation-provider)
+[![Latest Stable Version](https://img.shields.io/packagist/v/cekurte/silex-translation-provider.svg?style=square)](https://packagist.org/packages/cekurte/silex-translation-provider)
+[![License](https://img.shields.io/packagist/l/cekurte/silex-translation-provider.svg?style=square)](https://packagist.org/packages/cekurte/silex-translation-provider)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/49f6bd17-8f56-4887-a254-0ea227fdc30f/mini.png)](https://insight.sensiolabs.com/projects/49f6bd17-8f56-4887-a254-0ea227fdc30f)
 
 - A simple silex service provider (with all methods covered by php unit tests) that adds the Yaml files to the [Silex\Provider\TranslationServiceProvider](https://github.com/silexphp/Silex/blob/1.3/src/Silex/Provider/TranslationServiceProvider.php) to increase the power of your application, **contribute with this project**!
